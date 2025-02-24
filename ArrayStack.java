@@ -1,31 +1,52 @@
 import java.util.*;
-public class ArrayStack{	
+public class ArrayStack{   
 protected int capacity;
 protected int[] stack;
 protected int top = -1;
 public ArrayStack(int cap) {
 capacity = cap;
-stack = new int[capacity]; 
+stack = new int[capacity];
 }
 public int size()
 {
     return (top+1);
 }
-public void push() 
+public void push(int data)
 {
-// TYPE YOUR CODE HERE
-}
-public int pop() 
+if (isFull())
+System.out.println("Stack is Overflow. Not possible to insert in Full stack");
+else
 {
-// TYPE YOUR CODE HERE
+stack[++top] = data;
+System.out.println("Element is inserted");
 }
+}
+
+public int pop()
+{
+int data=-1;
+if (isEmpty())
+{
+System.out.println("Stack is Underflow. No elements to be popped in Empty Stack");
+
+}
+else
+{
+data = stack[top];
+top--;
+
+}
+return data;
+}
+
 public boolean isFull()
 {
-// TYPE YOUR CODE HERE
+    return (size()==capacity);
 }
+
 public boolean isEmpty()
 {
-    // TYPE YOUR CODE HERE
+    return (top<0);
 }
 public void display()
 {
@@ -49,16 +70,16 @@ public static void main(String[] args)
     System.out.println("2.Pop");
     System.out.println("3.Display Stack");
     System.out.println("4.Exit\n");
-    System.out.println("Enter your choice:"); 
+    System.out.println("Enter your choice:");
     ch=sc.nextInt();
     switch(ch)
     {
-        case 1: 
+        case 1:
             System.out.println("Enter the element to insert:");
             data=sc.nextInt();
             s.push(data);
             break;
-        case 2:            
+        case 2:           
             data=s.pop();
             if(data!=-1)
             System.out.println("Popped Element:"+data);
@@ -69,3 +90,4 @@ public static void main(String[] args)
           } }while(ch<4);
 }
 }
+
